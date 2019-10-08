@@ -1,5 +1,8 @@
 //The Empire,ET,Sean,You in your small corner, the big bang
 var globalSelector = 0;
+var wins = 0;
+var fails = 0;
+var unAnswered = 0;
 
 var questions=[
     {   question:"Which 80s movie was the highest grossing film of the decade?",
@@ -65,6 +68,7 @@ function questionsView(){
     // Display 'counter' wherever you want to display it.
     if (counter <= 0) {
              clearInterval(interval);
+             unAnswered++;
              answerView(false,"You didn't answer! ☹️","The correct answer is: "+correctAns[globalSelector],questions[globalSelector].image);
         $('#timeRemaining').html("Time Remaining: "+10);  
         return;
@@ -85,8 +89,10 @@ function questionsView(){
     $(".button").on("click",function(){
         $('#timeRemaining').html("Time Remaining: "+10);
         if($(this).val()==="true"){
+            wins++;
             answerView(true,"That's correct! 😃","",questions[globalSelector].image);
         }else{
+            fails++;
             answerView(false,"Tha's not correct... ☹️","The correct answer is: "+correctAns[globalSelector],questions[globalSelector].image);
         }
         clearInterval(interval);
@@ -95,20 +101,26 @@ function questionsView(){
 
 function answerView(correct,data,correctAns,image){
     $("#timeRemaining").show();
-    var counter = 10;
+    $('#timeRemaining').html("Time Remaining: "+5);
+    var counter = 5;
     var interval = setInterval(function() {
     counter--;
     // Display 'counter' wherever you want to display it.
-    if (counter <= 0) {
-             clearInterval(interval);
-             globalSelector++;
-             questionsView();
-        $('#timeRemaining').html("Time Remaining: "+10);  
-        return;
-    }else{
-    	$('#timeRemaining').text("Time Remaining: "+counter);
-    }
-}, 1000);
+        if (counter <= 0) {
+                clearInterval(interval);
+                globalSelector++;
+                if(globalSelector<5){
+                    questionsView();
+                }else{
+                    resultsView();
+                }
+                
+            $('#timeRemaining').html("Time Remaining: "+10);  
+            return;
+        }else{
+            $('#timeRemaining').text("Time Remaining: "+counter);
+        }
+    }, 1000);
     $("#timeRemaining").show();
     $("#gameContainer").empty();
     $("#gameContainer").append("<p id='validation'>"+data+"</p>");
@@ -116,9 +128,6 @@ function answerView(correct,data,correctAns,image){
         $("#gameContainer").append("<p id='correctAnswer'>"+correctAns+"</p>");
     }
     $("#gameContainer").append("<img id='answerImage' src='"+image+"'>");
-    if(globalSelector<5){
-        globalSelector++;
-    }
 
 }
 
@@ -126,25 +135,18 @@ function resultsView(){
     $("#timeRemaining").hide();
     $("#gameContainer").empty();
     $("#gameContainer").append("<p class='comments'>All done, here is how you did!</p>");
-    $("#gameContainer").append("<p id='correctAnswers'>"+"Insert question"+"</p>");
-    $("#gameContainer").append("<p id='incorrectAnswers'>"+"Insert question"+"</p>");
-    $("#gameContainer").append("<p id='unansweredQuestions'>"+"Insert question"+"</p>");
+    $("#gameContainer").append("<p id='correctAnswers'>Correct answers: "+wins+"</p>");
+    $("#gameContainer").append("<p id='incorrectAnswers'>Incorrect answers: "+fails+"</p>");
+    $("#gameContainer").append("<p id='unansweredQuestions'>Unanswered questions: "+unAnswered+"</p>");
+    $("#gameContainer").append("<button class='button'>Start again</button>");
+
+    $(".button").on("click",function(){
+        globalSelector = 0;
+        wins = 0;
+        fails = 0;
+        unAnswered = 0;
+        initialView();
+    });
 }
 
-function countdown(){
-    $("#timeRemaining").show();
-    var counter = 10;
-    var interval = setInterval(function() {
-    counter--;
-    // Display 'counter' wherever you want to display it.
-    if (counter <= 0) {
-             clearInterval(interval);
-        globalSelector++;
-        $('#timeRemaining').html("<h3>Count down complete</h3>");  
-        return;
-    }else{
-    	$('#timeRemaining').text("Time Remaining: "+counter);
-    }
-}, 1000);
-}
 
