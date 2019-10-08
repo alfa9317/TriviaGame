@@ -1,0 +1,85 @@
+body{
+    background-image: url(https://wallpaperaccess.com/full/856965.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: black;
+    background-size: cover;
+}
+
+#mainContainer{
+    background-color:rgb(97,242,245,0.5);
+    width: 50%;
+    height: 60%;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    padding: 1rem;
+}
+
+#title{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.startButton{
+    color: #382039 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #382039 !important;
+    display: inline-block;
+    transition: all 0.2s ease 0s;
+    width: 70%;
+    height: 20%;
+    position: absolute;
+    top:40%; 
+    left:15%
+}
+
+.startButton:hover {
+    color: #ffffff !important;
+    background: #6b48ff;
+    border-color: #6b48ff !important;
+    transition: all 0.2s ease 0s;
+    }
+
+.buttonsContainer{
+    position: relative;
+    left: 14%;
+    padding: 1rem;
+}
+.button{
+    color: #382039 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #382039 !important;
+    display: inline-block;
+    transition: all 0.2s ease 0s;
+    width: 70%;
+    height: 20%;
+    margin: 2px;
+}
+.button:hover{
+    color: #ffffff !important;
+    background: #6b48ff;
+    border-color: #6b48ff !important;
+    transition: all 0.2s ease 0s;
+}
+
+#timeRemaining{
+    text-align: center;
+    font-size: 30px;
+}
+#question{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
