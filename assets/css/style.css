@@ -10,7 +10,7 @@ body{
 #mainContainer{
     background-color:rgb(97,242,245,0.5);
     width: 50%;
-    height: 60%;
+    height: 70%;
     position: absolute;
     left: 50%;
     top:50%;
@@ -75,7 +75,8 @@ body{
 
 #timeRemaining{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 4px;
 }
 #question{
     text-align: center;
@@ -85,20 +86,19 @@ body{
 }
 #validation{
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
     margin: 1rem;
 }
 
 #correctAnswer{
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
     margin: 1rem;
 }
 
 #answerImage{
     position: absolute;
     top:50%;
-    left:37%;
-    width: 200px;
-    height: 200px;
+    left:30%;
+    width: 300px;
 }
