@@ -102,3 +102,21 @@ body{
     left:30%;
     width: 300px;
 }
+
+.comments{
+    text-align: center;
+    font-size: 35px;
+    margin: 1rem
+}
+
+#correctAnswers, #incorrectAnswers, #unansweredQuestions{
+    text-align: center;
+    font-size: 25px;
+    margin: 1rem;
+}
+
+#againButton{
+    position: absolute;
+    top:60%; 
+    left:15%
+}

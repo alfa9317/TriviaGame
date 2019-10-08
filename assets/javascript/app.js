@@ -138,7 +138,7 @@ function resultsView(){
     $("#gameContainer").append("<p id='correctAnswers'>Correct answers: "+wins+"</p>");
     $("#gameContainer").append("<p id='incorrectAnswers'>Incorrect answers: "+fails+"</p>");
     $("#gameContainer").append("<p id='unansweredQuestions'>Unanswered questions: "+unAnswered+"</p>");
-    $("#gameContainer").append("<button class='button'>Start again</button>");
+    $("#gameContainer").append("<button id='againButton' class='button'>Start again</button>");
 
     $(".button").on("click",function(){
         globalSelector = 0;
