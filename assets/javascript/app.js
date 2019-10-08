@@ -1,6 +1,5 @@
 //The Empire,ET,Sean,You in your small corner, the big bang
-
-var glogalSelector = 0;
+var globalSelector = 0;
 
 var questions=[
     {   question:"Which 80s movie was the highest grossing film of the decade?",
@@ -47,6 +46,7 @@ initialView();
 
 function initialView(){
     $("#gameContainer").empty();
+    $("#timeRemaining").hide();
     var a = $("<button>");
     a.addClass("startButton");
     a.text("start");
@@ -58,42 +58,93 @@ function initialView(){
 }
 
 function questionsView(){
+    $("#timeRemaining").show();
+    var counter = 10;
+    var interval = setInterval(function() {
+    counter--;
+    // Display 'counter' wherever you want to display it.
+    if (counter <= 0) {
+             clearInterval(interval);
+             answerView(false,"You didn't answer! ☹️","The correct answer is: "+correctAns[globalSelector],questions[globalSelector].image);
+        $('#timeRemaining').html("Time Remaining: "+10);  
+        return;
+    }else{
+    	$('#timeRemaining').text("Time Remaining: "+counter);
+    }
+}, 1000);
     $("#gameContainer").empty();
-    $("#gameContainer").append("<p id='timeRemaining'>Time Remaining:"+"</p>");
-    $("#gameContainer").append("<p id='question'>"+questions[glogalSelector].question+"</p>");
+    $("#gameContainer").append("<p id='question'>"+questions[globalSelector].question+"</p>");
     var div = $("<div>");
     div.addClass("buttonsContainer");
     $("#gameContainer").append(div);
-    $(".buttonsContainer").append("<button class='button' value="+questions[glogalSelector].ans1.select+">"+questions[glogalSelector].ans1.value+"</button>");
-    $(".buttonsContainer").append("<button class='button' value="+questions[glogalSelector].ans2.select+">"+questions[glogalSelector].ans2.value+"</button>");
-    $(".buttonsContainer").append("<button class='button' value="+questions[glogalSelector].ans3.select+">"+questions[glogalSelector].ans3.value+"</button>");
-    $(".buttonsContainer").append("<button class='button' value="+questions[glogalSelector].ans4.select+">"+questions[glogalSelector].ans4.value+"</button>");
+    $(".buttonsContainer").append("<button class='button' value="+questions[globalSelector].ans1.select+">"+questions[globalSelector].ans1.value+"</button>");
+    $(".buttonsContainer").append("<button class='button' value="+questions[globalSelector].ans2.select+">"+questions[globalSelector].ans2.value+"</button>");
+    $(".buttonsContainer").append("<button class='button' value="+questions[globalSelector].ans3.select+">"+questions[globalSelector].ans3.value+"</button>");
+    $(".buttonsContainer").append("<button class='button' value="+questions[globalSelector].ans4.select+">"+questions[globalSelector].ans4.value+"</button>");
 
     $(".button").on("click",function(){
+        $('#timeRemaining').html("Time Remaining: "+10);
         if($(this).val()==="true"){
-            answerView(true,"That's correct! 😃","",questions[glogalSelector].image);
+            answerView(true,"That's correct! 😃","",questions[globalSelector].image);
         }else{
-            answerView(false,"Tha's not correct... ☹️","The correct answer is: "+correctAns[glogalSelector],questions[glogalSelector].image);
+            answerView(false,"Tha's not correct... ☹️","The correct answer is: "+correctAns[globalSelector],questions[globalSelector].image);
         }
-        
+        clearInterval(interval);
     });
 }
 
 function answerView(correct,data,correctAns,image){
+    $("#timeRemaining").show();
+    var counter = 10;
+    var interval = setInterval(function() {
+    counter--;
+    // Display 'counter' wherever you want to display it.
+    if (counter <= 0) {
+             clearInterval(interval);
+             globalSelector++;
+             questionsView();
+        $('#timeRemaining').html("Time Remaining: "+10);  
+        return;
+    }else{
+    	$('#timeRemaining').text("Time Remaining: "+counter);
+    }
+}, 1000);
+    $("#timeRemaining").show();
     $("#gameContainer").empty();
-    $("#gameContainer").append("<p id='timeRemaining'>Time Remaining:"+"</p>");
     $("#gameContainer").append("<p id='validation'>"+data+"</p>");
     if(!correct){
         $("#gameContainer").append("<p id='correctAnswer'>"+correctAns+"</p>");
     }
     $("#gameContainer").append("<img id='answerImage' src='"+image+"'>");
+    if(globalSelector<5){
+        globalSelector++;
+    }
+
 }
 
 function resultsView(){
+    $("#timeRemaining").hide();
     $("#gameContainer").empty();
     $("#gameContainer").append("<p class='comments'>All done, here is how you did!</p>");
     $("#gameContainer").append("<p id='correctAnswers'>"+"Insert question"+"</p>");
     $("#gameContainer").append("<p id='incorrectAnswers'>"+"Insert question"+"</p>");
     $("#gameContainer").append("<p id='unansweredQuestions'>"+"Insert question"+"</p>");
+}
+
+function countdown(){
+    $("#timeRemaining").show();
+    var counter = 10;
+    var interval = setInterval(function() {
+    counter--;
+    // Display 'counter' wherever you want to display it.
+    if (counter <= 0) {
+             clearInterval(interval);
+        globalSelector++;
+        $('#timeRemaining').html("<h3>Count down complete</h3>");  
+        return;
+    }else{
+    	$('#timeRemaining').text("Time Remaining: "+counter);
+    }
+}, 1000);
 }
 
