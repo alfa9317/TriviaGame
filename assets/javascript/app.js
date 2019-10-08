@@ -90,7 +90,7 @@ function questionsView(){
         $('#timeRemaining').html("Time Remaining: "+10);
         if($(this).val()==="true"){
             wins++;
-            answerView(true,"That's correct! 😃","",questions[globalSelector].image);
+            answerView(true,"That's correct! 👾","",questions[globalSelector].image);
         }else{
             fails++;
             answerView(false,"Tha's not correct... ☹️","The correct answer is: "+correctAns[globalSelector],questions[globalSelector].image);

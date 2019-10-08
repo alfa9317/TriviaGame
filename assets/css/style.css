@@ -1,3 +1,10 @@
+/* font-family: 'Monoton', cursive;
+font-family: 'Bangers', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Alef', sans-serif;
+font-family: 'Chakra Petch', sans-serif; */
+
+
 body{
     background-image: url(https://wallpaperaccess.com/full/856965.jpg);
     background-position: center center;
@@ -23,6 +30,7 @@ body{
     font-size: 3rem;
     margin-top: 10px;
     margin-bottom: 20px;
+    font-family: 'Monoton', cursive;
 }
 
 .startButton{
@@ -38,7 +46,8 @@ body{
     height: 20%;
     position: absolute;
     top:40%; 
-    left:15%
+    left:15%;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 .startButton:hover {
@@ -46,6 +55,7 @@ body{
     background: #6b48ff;
     border-color: #6b48ff !important;
     transition: all 0.2s ease 0s;
+    font-family: 'Chakra Petch', sans-serif;
     }
 
 .buttonsContainer{
@@ -65,35 +75,41 @@ body{
     width: 70%;
     height: 20%;
     margin: 2px;
+    font-family: 'Chakra Petch', sans-serif;
 }
 .button:hover{
     color: #ffffff !important;
     background: #6b48ff;
     border-color: #6b48ff !important;
     transition: all 0.2s ease 0s;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 #timeRemaining{
     text-align: center;
     font-size: 25px;
     margin-bottom: 4px;
+    font-family: 'Bangers', cursive;
 }
 #question{
     text-align: center;
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 15px;
+    font-family: 'Chakra Petch', sans-serif;
 }
 #validation{
     text-align: center;
     font-size: 35px;
     margin: 1rem;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 #correctAnswer{
     text-align: center;
     font-size: 25px;
     margin: 1rem;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 #answerImage{
@@ -101,22 +117,26 @@ body{
     top:50%;
     left:30%;
     width: 300px;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 .comments{
     text-align: center;
     font-size: 35px;
-    margin: 1rem
+    margin: 1rem;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 #correctAnswers, #incorrectAnswers, #unansweredQuestions{
     text-align: center;
     font-size: 25px;
     margin: 1rem;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 #againButton{
     position: absolute;
     top:60%; 
-    left:15%
+    left:15%;
+    font-family: 'Chakra Petch', sans-serif;
 }
